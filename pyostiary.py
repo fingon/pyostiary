@@ -9,8 +9,8 @@
 # Copyright (c) 2016 Markus Stenberg
 #
 # Created:       Thu Nov 10 21:06:39 2016 mstenber
-# Last modified: Thu Nov 10 21:49:02 2016 mstenber
-# Edit time:     32 min
+# Last modified: Thu Nov 10 21:53:15 2016 mstenber
+# Edit time:     34 min
 #
 """Simple implementation of both Ostiary client and server in Python.
 
@@ -88,7 +88,7 @@ def run_server(args):
                     buf2 = hmac.new(key, nonce, hashlib.sha256).digest()
                     assert len(buf2) == len(buf)
                     if hmac.compare_digest(buf, buf2):
-                        os.system(cmd)
+                        os.system('%s %s' % (cmd, a[0]))
         except socket.timeout:
             pass
         time.sleep(CONNECTION_DELAY)
