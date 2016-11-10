@@ -9,8 +9,8 @@
 # Copyright (c) 2016 Markus Stenberg
 #
 # Created:       Thu Nov 10 21:06:39 2016 mstenber
-# Last modified: Thu Nov 10 21:53:15 2016 mstenber
-# Edit time:     34 min
+# Last modified: Thu Nov 10 22:15:12 2016 mstenber
+# Edit time:     36 min
 #
 """Simple implementation of both Ostiary client and server in Python.
 
@@ -26,6 +26,8 @@ Non features that are not implemented:
   defines in the .py, if you really must)
 
 """
+
+import binascii
 import hashlib
 import hmac
 import os
@@ -63,11 +65,11 @@ def run_client(args):
     s = open_socket(args, True)
     s.settimeout(SOCK_TIMEOUT)
     nonce = s.recv(HASH_SIZE)
-    print('Got nonce %s' % nonce.encode('hex'))
+    print('Got nonce %s' % binascii.hexlify(nonce))
     assert len(nonce) == HASH_SIZE
-    buf = hmac.new(args.client, nonce, hashlib.sha256).digest()
+    buf = hmac.new(args.client.encode(), nonce, hashlib.sha256).digest()
     s.send(buf)
-    print('Sent reply %s' % buf.encode('hex'))
+    print('Sent reply %s' % binascii.hexlify(buf))
 
 
 def run_server(args):
@@ -85,7 +87,8 @@ def run_server(args):
                     if m is None:
                         continue
                     (key, cmd) = m.groups()
-                    buf2 = hmac.new(key, nonce, hashlib.sha256).digest()
+                    buf2 = hmac.new(key.encode(), nonce,
+                                    hashlib.sha256).digest()
                     assert len(buf2) == len(buf)
                     if hmac.compare_digest(buf, buf2):
                         os.system('%s %s' % (cmd, a[0]))
