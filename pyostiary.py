@@ -9,21 +9,12 @@
 # Copyright (c) 2016 Markus Stenberg
 #
 # Created:       Thu Nov 10 21:06:39 2016 mstenber
-# Last modified: Thu Nov 10 22:15:12 2016 mstenber
-# Edit time:     36 min
+# Last modified: Thu Nov 10 22:24:44 2016 mstenber
+# Edit time:     37 min
 #
 """Simple implementation of both Ostiary client and server in Python.
 
 Configuration (subset) compatible, protocol compatible (hopefully).
-
-Non features that are not implemented:
-
-- kill when blacklist full
-
-- kill command
-
-- server-side configuration of various things in file (just edit
-  defines in the .py, if you really must)
 
 """
 
