@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # -*- Python -*-
 #
@@ -9,8 +9,8 @@
 # Copyright (c) 2016 Markus Stenberg
 #
 # Created:       Thu Nov 10 21:06:39 2016 mstenber
-# Last modified: Thu Nov 10 22:24:44 2016 mstenber
-# Edit time:     37 min
+# Last modified: Thu Aug  4 16:52:20 2022 mstenber
+# Edit time:     39 min
 #
 """Simple implementation of both Ostiary client and server in Python.
 
@@ -104,3 +104,5 @@ if __name__ == '__main__':
         run_client(args)
     elif args.server:
         run_server(args)
+    else:
+        raise NotImplementedError("--client or --server must be supplied")

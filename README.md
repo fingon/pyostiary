@@ -1,6 +1,6 @@
 # pyostiary
 
-Minimal implementation of [Ostiary](http://ingles.homeunix.net/software/ost/) client/server in Python 2/3.
+Minimal implementation of [Ostiary](http://ingles.homeunix.net/software/ost/) client/server in Python 3.
 
 ## Usage example given the sample configuration file
 
